@@ -7,6 +7,36 @@ const onImageLoad = () => {
   isImageLoaded.value = true
 }
 
+const scrollToOrdinace = (e: Event) => {
+  e.preventDefault()
+  const target = document.getElementById('ordinace')
+  if (!target) return
+
+  const start = window.scrollY
+  const targetRect = target.getBoundingClientRect()
+  const targetCenter = targetRect.top + start + (targetRect.height / 2)
+  const viewportCenter = window.innerHeight / 2
+  const end = targetCenter - viewportCenter
+  const duration = 1200
+  const startTime = performance.now()
+
+  const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
+
+  const animate = (currentTime: number) => {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    const eased = easeOutQuart(progress)
+
+    window.scrollTo(0, start + (end - start) * eased)
+
+    if (progress < 1) {
+      requestAnimationFrame(animate)
+    }
+  }
+
+  requestAnimationFrame(animate)
+}
+
 onMounted(() => {
   // Safety timeout in case image load event doesn't fire or takes too long
   setTimeout(() => {
@@ -29,8 +59,8 @@ onMounted(() => {
     </div>
 
     <div class="container relative z-10 mx-auto px-6 md:px-8 lg:px-12 xl:px-24">
-      <div class="relative bg-background/80 backdrop-blur-sm rounded-[2rem] shadow-2xl overflow-hidden border border-white/20">
-        <div class="flex flex-col lg:flex-row items-stretch min-h-[500px] md:min-h-[550px] lg:min-h-[600px]">
+      <div class="relative bg-background/80 backdrop-blur-sm rounded-[2rem] shadow-2xl overflow-hidden ">
+        <div class="flex flex-col lg:flex-row items-stretch">
           <!-- Content Section - 45% width on desktop -->
           <div class="relative w-full lg:w-[45%] order-2 lg:order-1 flex flex-col justify-center items-start p-8 md:p-12 lg:p-16 xl:p-20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             
@@ -60,40 +90,43 @@ onMounted(() => {
             <div class="w-full space-y-6 animate-enter" style="--stagger: 4">
               <!-- Primary CTA -->
               <div class="flex flex-col sm:flex-row gap-4">
-                <Button as-child size="lg" class="text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5">
-                  <NuxtLink to="/sluzby">
-                    Naše služby
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </NuxtLink>
-                </Button>
+                <NuxtLink
+                  to="/sluzby"
+                  class="inline-flex items-center justify-center h-14 text-lg px-8 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-primary/25 hover:bg-primary/90 transition-all duration-300 hover:-translate-y-0.5 font-medium"
+                >
+                  Naše služby
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </NuxtLink>
 
-                <Button as-child variant="outline" size="lg" class="text-lg px-8 py-6 rounded-full border-primary/20 hover:bg-primary/5 hover:text-primary transition-all duration-300">
-                  <a href="tel:+420123456789">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    +420 123 456 789
-                  </a>
-                </Button>
+                <a
+                  href="#ordinace"
+                  class="inline-flex items-center justify-center h-14 text-lg px-8 rounded-full border border-primary/20 bg-background hover:bg-primary/5 hover:text-primary transition-all duration-300 font-medium"
+                  @click="scrollToOrdinace"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Zavolat
+                </a>
               </div>
             </div>
           </div>
 
           <!-- Image Section - 55% width on desktop -->
-          <div class="relative w-full lg:w-[55%] order-1 lg:order-2 overflow-hidden group bg-muted animate-enter" style="--stagger: 0">
+          <div class="relative w-full lg:w-[55%] order-1 lg:order-2 overflow-hidden group bg-muted animate-enter aspect-[2/1]" style="--stagger: 0">
             <NuxtImg
               src="/heroimage.webp"
               alt="Oční klinika Videre - Moderní ordinace s pokročilou diagnostickou technologií pro komplexní péči o Vaše oči"
-              class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+              class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-105"
+              :class="isImageLoaded ? 'opacity-100' : 'opacity-0'"
               width="1400"
               height="700"
               format="webp"
               quality="90"
               loading="eager"
               fetchpriority="high"
-              placeholder
               @load="onImageLoad"
             />
 
@@ -103,6 +136,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
   </section>
 </template>
 

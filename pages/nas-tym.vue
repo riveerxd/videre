@@ -33,11 +33,9 @@ addBreadcrumbSchema([
 ])
 
 // Define OG Image
-defineOgImageComponent('NuxtSeo', {
-  
+defineOgImageComponent('OgImageCustom', {
   title: 'Náš tým',
-  description: 'Zkušení oftalmologové s více než 150 lety praxe',
-  siteName: 'Videre.cz', siteLogo: 'https://videre.cz/logo.png', theme: '#0F766E', colorMode: 'light'
+  description: 'Zkušení oftalmologové s více než 150 lety praxe'
 })
 
 // Person structured data for doctors
@@ -54,37 +52,55 @@ useHead({
           {
             '@type': 'Physician',
             name: 'MUDr. Samer Al Marei',
+            image: 'https://videre.cz/almarei.jpeg',
             medicalSpecialty: 'Ophthalmology',
+            description: 'Oční lékař s atestací z oftalmologie a specializací na aplikaci botulotoxinu. Člen České a Syrské oftalmologické společnosti.',
+            knowsLanguage: ['cs', 'en', 'ar'],
+            alumniOf: 'Masarykova univerzita LF',
             memberOf: {
               '@type': 'MedicalOrganization',
-              name: 'Oční klinika Videre'
+              name: 'Oční klinika Videre',
+              url: 'https://videre.cz'
             }
           },
           {
             '@type': 'Physician',
             name: 'MUDr. Irena Svobodová',
+            image: 'https://videre.cz/svobodova.jpeg',
             medicalSpecialty: 'Ophthalmology',
+            description: 'Oční lékařka s více než 35 lety praxe v oboru oftalmologie. Člen České oftalmologické společnosti.',
+            alumniOf: 'Karlova univerzita v Hradci Králové',
             memberOf: {
               '@type': 'MedicalOrganization',
-              name: 'Oční klinika Videre'
+              name: 'Oční klinika Videre',
+              url: 'https://videre.cz'
             }
           },
           {
             '@type': 'Physician',
             name: 'MUDr. Ingrid Pavlová',
+            image: 'https://videre.cz/pavlova.jpeg',
             medicalSpecialty: 'Ophthalmology',
+            description: 'Oční lékařka s více než 40 lety praxe. Člen České oftalmologické společnosti.',
+            knowsLanguage: ['cs', 'en', 'de', 'ru'],
+            alumniOf: 'Karlova univerzita v Praze',
             memberOf: {
               '@type': 'MedicalOrganization',
-              name: 'Oční klinika Videre'
+              name: 'Oční klinika Videre',
+              url: 'https://videre.cz'
             }
           },
           {
             '@type': 'Physician',
             name: 'MUDr. Ahmed Sayed Ahmed',
+            image: 'https://videre.cz/ahmed.jpeg',
             medicalSpecialty: 'Ophthalmology',
+            description: 'Oční lékař s více než 40 lety praxe a atestací z oftalmologie. Člen Syrské oftalmologické společnosti.',
+            alumniOf: 'Masarykova univerzita',
             memberOf: {
               '@type': 'MedicalOrganization',
-              name: 'Oční klinika Videre'
+              name: 'Oční klinika Videre',
+              url: 'https://videre.cz'
             }
           }
         ]
@@ -220,7 +236,7 @@ const doctors = [
                 <div class="relative h-[450px] overflow-hidden">
                   <NuxtImg
                     :src="doctor.image"
-                    :alt="doctor.name"
+                    :alt="`${doctor.name} - oftalmolog, oční lékař v Oční klinice Videre Praha`"
                     width="600"
                     height="450"
                     format="webp"

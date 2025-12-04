@@ -42,11 +42,9 @@ addServiceSchema({
 })
 
 // Define OG Image
-defineOgImageComponent('NuxtSeo', {
-  
+defineOgImageComponent('OgImageCustom', {
   title: 'Naše služby',
-  description: 'Komplexní oční péče, diagnostika a léčba očních onemocnění',
-  siteName: 'Videre.cz', siteLogo: 'https://videre.cz/logo.png', theme: '#0F766E', colorMode: 'light'
+  description: 'Komplexní oční péče, diagnostika a léčba očních onemocnění'
 })
 
 // FAQ schema for common questions
@@ -62,6 +60,14 @@ addFAQSchema([
   {
     question: 'Kolik stojí oční vyšetření?',
     answer: 'Ceny našich služeb naleznete v sekci Ceník. Základní oční vyšetření je hrazeno pojišťovnou, některé nadstandardní služby jsou placeny pacientem.'
+  },
+  {
+    question: 'Co je OCT vyšetření a kdy je potřeba?',
+    answer: 'OCT (optická koherenční tomografie) je neinvazivní zobrazovací metoda, která vytváří detailní snímky sítnice a zrakového nervu. Je klíčová pro diagnostiku a sledování makulární degenerace, glaukomu a diabetické retinopatie.'
+  },
+  {
+    question: 'Jak často bych měl chodit na oční prohlídku?',
+    answer: 'Doporučujeme pravidelné oční vyšetření jednou ročně. U dětí, seniorů, diabetiků a pacientů s očním onemocněním je vhodná častější kontrola dle doporučení lékaře.'
   }
 ])
 

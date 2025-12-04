@@ -24,7 +24,8 @@
     "radix-vue": "^1.9.17",
     "reka-ui": "^2.6.0",
     "tailwind-merge": "^3.4.0",
-    "vue": "latest"
+    "vue": "latest",
+    "vue3-marquee": "^4.2.2"
   },
   "devDependencies": {
     "@nuxtjs/seo": "^2.0.3",

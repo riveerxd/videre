@@ -2,7 +2,7 @@
 import { Motion } from 'motion-v'
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card'
 
-const { fadeInUp, stagger, buttonPremium, scaleIn } = useAnimations()
+const { fadeInUp, stagger, buttonPrimarySmooth, buttonSmooth, scaleIn } = useAnimations()
 const { addBreadcrumbSchema } = useStructuredData()
 
 // Dynamic canonical URL
@@ -34,11 +34,9 @@ addBreadcrumbSchema([
 ])
 
 // Define OG Image
-defineOgImageComponent('NuxtSeo', {
-  
+defineOgImageComponent('OgImageCustom', {
   title: 'Ordinace Praha 8',
-  description: 'Poliklinika Čumpelíkova - Komplexní oční péče',
-  siteName: 'Videre.cz', siteLogo: 'https://videre.cz/logo.png', theme: '#0F766E', colorMode: 'light'
+  description: 'Poliklinika Čumpelíkova - Komplexní oční péče'
 })
 
 // LocalBusiness structured data for SEO
@@ -53,8 +51,8 @@ useHead({
         image: 'https://videre.cz/poliklinika_cumpelikova.jpg',
         '@id': 'https://videre.cz/ordinace/cumpelikova',
         url: 'https://videre.cz/ordinace/cumpelikova',
-        telephone: '+420123456789',
-        email: 'cumpelikova@videre.cz',
+        telephone: '+420603141490',
+        email: 'ocnicumpelikova@email.cz',
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Čumpelíková 1764/2',
@@ -112,8 +110,8 @@ const location = {
   city: 'Praha 8',
   zip: '182 00',
   image: '/poliklinika_cumpelikova.jpg',
-  phone: '+420 123 456 789',
-  email: 'cumpelikova@videre.cz',
+  phone: '+420 603 141 490',
+  email: 'ocnicumpelikova@email.cz',
   hours: [
     { day: 'Pondělí', time: '8:00 - 12:30 | 13:00 - 16:00' },
     { day: 'Úterý', time: '8:00 - 12:30 | 13:00 - 16:00' },
@@ -121,7 +119,7 @@ const location = {
     { day: 'Čtvrtek', time: '8:00 - 12:30 | 13:00 - 17:00' },
     { day: 'Pátek', time: '8:00 - 13:00' }
   ],
-  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.5!2d14.445!3d50.115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94c1f8c8f8f1%3A0x1234567890abcdef!2zxIx1bXBlbMOta292w6EgMTc2NC8yLCAxODIgMDAgUHJhaGEgOA!5e0!3m2!1scs!2scz!4v1234567890123!5m2!1scs!2scz',
+  mapEmbedUrl: 'https://www.google.com/maps?q=Čumpelíkova+1764/2,+182+00+Praha+8-Kobylisy&output=embed',
   mapUrl: 'https://mapy.cz/zakladni?q=%C4%8Cumpel%C3%ADkov%C3%A1+1764%2F2+Praha+8'
 }
 </script>
@@ -245,8 +243,8 @@ const location = {
                     <Motion
                       tag="a"
                       :href="`tel:${location.phone}`"
-                      v-bind="buttonPremium"
-                      class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-semibold shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
+                      v-bind="buttonPrimarySmooth"
+                      class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg"
                       aria-label="Zavolejte nám"
                     >
                       <svg
@@ -265,8 +263,8 @@ const location = {
                     <Motion
                       tag="a"
                       :href="`mailto:${location.email}`"
-                      v-bind="buttonPremium"
-                      class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border bg-background hover:bg-accent/10 hover:border-primary/30 transition-all font-semibold text-foreground hover:-translate-y-0.5"
+                      v-bind="buttonSmooth"
+                      class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border bg-background font-semibold text-foreground"
                       aria-label="Napište nám email"
                     >
                       <svg
@@ -323,11 +321,8 @@ const location = {
           <!-- Google Maps -->
           <Motion tag="section" v-bind="fadeInUp" class="mb-12">
             <Card class="overflow-hidden border-0 bg-background/50 backdrop-blur-sm shadow-xl rounded-[2rem] ring-1 ring-border/50">
-              <CardHeader class="p-8 pb-4">
-                <CardTitle class="text-2xl font-bold">Jak se k nám dostanete</CardTitle>
-              </CardHeader>
               <CardContent class="p-0">
-                <div class="w-full h-96 md:h-[500px] grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="w-full h-96 md:h-[500px]">
                   <iframe
                     :src="location.mapEmbedUrl"
                     width="100%"

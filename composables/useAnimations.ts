@@ -280,11 +280,12 @@ export const useAnimations = () => {
   // Card entrance - elegant and premium
   const cardEntrance = createAnimation({
     initial: { opacity: 0, y: 30 },
-    animate: {
+    whileInView: {
       opacity: 1,
       y: 0,
       transition: { duration: 0.7, ease: easings.smooth }
     },
+    viewport: { once: true, margin: '-50px' },
     whileHover: {
       y: -6,
       boxShadow: '0 12px 40px rgba(0, 0, 0, 0.1)',
@@ -304,7 +305,7 @@ export const useAnimations = () => {
     }
   }
 
-  // Premium button with glow
+  // Premium button with glow (includes entrance)
   const buttonPremium = {
     initial: { opacity: 0, y: 20 },
     animate: {
@@ -320,6 +321,36 @@ export const useAnimations = () => {
     whileTap: {
       scale: 0.98,
       transition: { duration: 0.1 }
+    }
+  }
+
+  // Smooth button hover - no entrance, just smooth interactions
+  const buttonSmooth = prefersReducedMotion ? {} : {
+    whileHover: {
+      scale: 1.02,
+      y: -2,
+      transition: { duration: 0.25, ease: easings.soft }
+    },
+    whileTap: {
+      scale: 0.98,
+      y: 0,
+      transition: { duration: 0.15, ease: easings.soft }
+    }
+  }
+
+  // Primary button with glow - no entrance
+  const buttonPrimarySmooth = prefersReducedMotion ? {} : {
+    whileHover: {
+      scale: 1.02,
+      y: -2,
+      boxShadow: '0 10px 25px rgba(18, 182, 140, 0.35)',
+      transition: { duration: 0.25, ease: easings.soft }
+    },
+    whileTap: {
+      scale: 0.98,
+      y: 0,
+      boxShadow: '0 4px 15px rgba(18, 182, 140, 0.25)',
+      transition: { duration: 0.15, ease: easings.soft }
     }
   }
 
@@ -365,5 +396,7 @@ export const useAnimations = () => {
     cardEntrance,
     buttonInteraction,
     buttonPremium,
+    buttonSmooth,
+    buttonPrimarySmooth,
   }
 }

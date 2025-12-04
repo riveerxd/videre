@@ -43,11 +43,9 @@ addServiceSchema({
 })
 
 // Define OG Image
-defineOgImageComponent('NuxtSeo', {
-  
+defineOgImageComponent('OgImageCustom', {
   title: 'Estetická medicína',
-  description: 'Botox, výplně, plastické operace víček',
-  siteName: 'Videre.cz', siteLogo: 'https://videre.cz/logo.png', theme: '#0F766E', colorMode: 'light'
+  description: 'Botox, výplně, plastické operace víček v Praze'
 })
 
 // FAQ schema for aesthetic medicine
@@ -63,6 +61,14 @@ addFAQSchema([
   {
     question: 'Jsou výplně kyselinou hyaluronovou bezpečné?',
     answer: 'Ano, výplně kyselinou hyaluronovou jsou bezpečné a používáme pouze certifikované přípravky. Kyselina hyaluronová je látka přirozeně se vyskytující v těle, takže jsou reakce minimální. Efekt vydrží 6-12 měsíců.'
+  },
+  {
+    question: 'Kolik stojí plastická operace víček?',
+    answer: 'Plastická operace horních nebo dolních víček stojí 15 000 Kč. Cena zahrnuje předoperační konzultaci, samotný zákrok prováděný zkušeným očním chirurgem a pooperační kontrolu.'
+  },
+  {
+    question: 'Je potřeba před estetickým zákrokem konzultace?',
+    answer: 'Ano, před jakýmkoliv estetickým zákrokem doporučujeme absolvovat konzultaci se specialistou. Lékař zhodnotí Vaše přání, navrhne optimální řešení a seznámí Vás s průběhem zákroku i rekonvalescencí.'
   }
 ])
 
@@ -145,11 +151,7 @@ const services = [
             </p>
           </Motion>
 
-          <Motion
-            tag="div"
-            v-bind="stagger(0.15).animate"
-            class="space-y-16"
-          >
+          <div class="space-y-16">
             <!-- Service Cards -->
             <Motion
               v-for="(service, index) in services"
@@ -250,24 +252,20 @@ const services = [
                 </div>
               </Card>
             </Motion>
-          </Motion>
+          </div>
         </div>
       </section>
 
       <!-- Why Choose Us Section -->
       <section class="py-24 md:py-32 relative overflow-hidden">
         <div class="container mx-auto px-6 md:px-8 lg:px-12 xl:px-24 relative z-10">
-          <Motion tag="div" v-bind="fadeInUp" class="text-center mb-16">
+          <Motion tag="div" v-bind="scrollFadeIn" class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Proč si vybrat nás
             </h2>
           </Motion>
 
-          <Motion
-            tag="div"
-            v-bind="stagger(0.1).animate"
-            class="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Motion tag="div" v-bind="cardEntrance">
               <Card class="h-full text-center border-0 bg-background/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-[2rem] p-8 group">
                 <CardHeader class="p-0 mb-6">
@@ -342,14 +340,14 @@ const services = [
                 </CardContent>
               </Card>
             </Motion>
-          </Motion>
+          </div>
         </div>
       </section>
 
       <!-- CTA Section -->
       <section class="py-24 md:py-32">
         <div class="container mx-auto px-6 md:px-8 lg:px-12 xl:px-24">
-          <Motion tag="div" v-bind="fadeInUp" class="text-center max-w-2xl mx-auto">
+          <Motion tag="div" v-bind="scrollFadeIn" class="text-center max-w-2xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Zajímá Vás estetická medicína?
             </h2>

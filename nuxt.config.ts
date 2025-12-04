@@ -83,7 +83,8 @@ export default defineNuxtConfig({
       { loc: '/ordinace/zarubova', priority: 0.9, changefreq: 'weekly' },
       { loc: '/ordinace/cumpelikova', priority: 0.9, changefreq: 'weekly' },
       { loc: '/cenik', priority: 0.7, changefreq: 'monthly' },
-      { loc: '/nas-tym', priority: 0.7, changefreq: 'monthly' }
+      { loc: '/nas-tym', priority: 0.7, changefreq: 'monthly' },
+      { loc: '/partneri', priority: 0.6, changefreq: 'monthly' }
     ]
   },
 
@@ -95,7 +96,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/sluzby', '/sluzby/esteticka-medicina', '/sluzby/optika', '/ordinace/zarubova', '/ordinace/cumpelikova', '/cenik', '/nas-tym']
+      routes: ['/', '/sluzby', '/sluzby/esteticka-medicina', '/sluzby/optika', '/ordinace/zarubova', '/ordinace/cumpelikova', '/cenik', '/nas-tym', '/partneri']
     },
     compressPublicAssets: true,
     minify: true

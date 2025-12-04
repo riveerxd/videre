@@ -29,9 +29,10 @@ addWebsiteSchema({
   description: 'Moderní oční klinika v Praze nabízející komplexní péči o oči, diagnostiku očních onemocnění, estetickou medicínu a oční optiku s využitím nejnovějších technologií.'
 })
 
-// Define OG Image using custom template
-defineOgImageComponent('OgImageTemplate', {
-  subtitle: 'Komplexní péče o Vaše oči s využitím nejnovějších technologií'
+// Define OG Image
+defineOgImageComponent('OgImageCustom', {
+  title: 'Oční klinika Videre',
+  description: 'Komplexní péče o Vaše oči s využitím nejnovějších technologií'
 })
 
 // Comprehensive Medical Organization schema with both locations
@@ -40,8 +41,8 @@ addMedicalOrganizationSchema({
   url: 'https://videre.cz',
   logo: 'https://videre.cz/logo.png',
   description: 'Oční klinika Videre poskytuje komplexní oftalmologické služby ve dvou moderních ordinacích v Praze. Nabízíme oční vyšetření, diagnostiku a léčbu očních onemocnění, estetickou medicínu a oční optiku.',
-  telephone: '+420123456789',
-  email: 'info@videre.cz',
+  telephone: '+420603141490',
+  email: 'ocnicumpelikova@email.cz',
   locations: [
     {
       name: 'Oční klinika Videre - Poliklinika Zárubova',
@@ -62,10 +63,10 @@ addMedicalOrganizationSchema({
 <template>
   <main class="min-h-screen">
     <Hero />
-    <ServicesOverview />
     <Locations />
-    <Testimonials />
     <News />
+    <ServicesOverview />
+    <Testimonials />
     <!-- Future sections will go here -->
   </main>
 </template>

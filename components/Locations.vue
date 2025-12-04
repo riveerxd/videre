@@ -12,7 +12,8 @@ const locations = [
     zip: '182 00',
     image: '/poliklinika_cumpelikova.jpg',
     mapUrl: 'https://mapy.cz/zakladni?q=%C4%8Cumpel%C3%ADkov%C3%A1+1764%2F2+Praha+8',
-    phone: '+420 123 456 789',
+    phone: '+420 603 141 490',
+    email: 'ocnicumpelikova@email.cz',
     hours: [
       { day: 'Pondělí', time: '8:00 - 12:30 | 13:00 - 16:00' },
       { day: 'Úterý', time: '8:00 - 12:30 | 13:00 - 16:00' },
@@ -28,7 +29,8 @@ const locations = [
     zip: '142 00',
     image: '/poliklinika_zarubova.jpg',
     mapUrl: 'https://mapy.cz/zakladni?q=Z%C3%A1rubova+498%2F31+Praha+4',
-    phone: '+420 123 456 789',
+    phone: '+420 776 471 040',
+    email: 'videresestra@email.cz',
     hours: [
       { day: 'Pondělí', time: '13:00 - 19:00' },
       { day: 'Úterý', time: '8:00 - 12:30 | 13:00 - 17:00' },

@@ -33,11 +33,9 @@ addBreadcrumbSchema([
 ])
 
 // Define OG Image
-defineOgImageComponent('NuxtSeo', {
-  
+defineOgImageComponent('OgImageCustom', {
   title: 'Ceník služeb',
-  description: 'Transparentní ceny očních vyšetření a estetické medicíny',
-  siteName: 'Videre.cz', siteLogo: 'https://videre.cz/logo.png', theme: '#0F766E', colorMode: 'light'
+  description: 'Transparentní ceny očních vyšetření a estetické medicíny'
 })
 
 // FAQ schema for pricing questions
@@ -53,8 +51,104 @@ addFAQSchema([
   {
     question: 'Kolik stojí aplikace Botoxu?',
     answer: 'Cena aplikace Botoxu (Dysport) se liší dle oblasti: čelo, vrásky mezi obočím nebo u koutků očí - 3000 Kč za 25 jednotek. Individuální dávkování stojí 130 Kč za jednotku.'
+  },
+  {
+    question: 'Kolik stojí plastická operace víček?',
+    answer: 'Plastická operace horních nebo dolních víček stojí 15 000 Kč. Cena zahrnuje předoperační konzultaci, samotný zákrok a pooperační kontrolu.'
+  },
+  {
+    question: 'Hradí pojišťovna oční vyšetření?',
+    answer: 'Základní oční vyšetření pro pojištěnce je hrazeno zdravotní pojišťovnou. Vyšetření na řidičský průkaz, zbrojní průkaz a estetické zákroky hradí pacient.'
   }
 ])
+
+// Price specification structured data for rich snippets
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'OfferCatalog',
+        name: 'Ceník služeb - Oční klinika Videre',
+        description: 'Kompletní ceník očních vyšetření a estetické medicíny',
+        provider: {
+          '@type': 'MedicalClinic',
+          name: 'Oční klinika Videre',
+          url: 'https://videre.cz'
+        },
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'MedicalProcedure',
+              name: 'Vyšetření na řidičský průkaz',
+              procedureType: 'Diagnostic'
+            },
+            price: '800',
+            priceCurrency: 'CZK',
+            priceValidUntil: '2025-12-31'
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'MedicalProcedure',
+              name: 'Vyšetření na zbrojní průkaz',
+              procedureType: 'Diagnostic'
+            },
+            price: '1500',
+            priceCurrency: 'CZK',
+            priceValidUntil: '2025-12-31'
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'MedicalProcedure',
+              name: 'OCT vyšetření sítnice',
+              procedureType: 'Diagnostic'
+            },
+            price: '700',
+            priceCurrency: 'CZK',
+            priceValidUntil: '2025-12-31'
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'MedicalProcedure',
+              name: 'Aplikace Botoxu - oblast čela',
+              procedureType: 'Cosmetic'
+            },
+            price: '3000',
+            priceCurrency: 'CZK',
+            priceValidUntil: '2025-12-31'
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'MedicalProcedure',
+              name: 'Výplně kyselinou hyaluronovou',
+              procedureType: 'Cosmetic'
+            },
+            price: '4999',
+            priceCurrency: 'CZK',
+            priceValidUntil: '2025-12-31'
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'MedicalProcedure',
+              name: 'Plastická operace očních víček',
+              procedureType: 'Surgical'
+            },
+            price: '15000',
+            priceCurrency: 'CZK',
+            priceValidUntil: '2025-12-31'
+          }
+        ]
+      })
+    }
+  ]
+})
 
 const standardServices = [
   {
@@ -511,7 +605,7 @@ const surgeryServices = [
         <p>
           V oblasti estetické medicíny poskytujeme aplikace botoxu od 3000 Kč, výplně kyselinou hyaluronovou za 4999 Kč za ml a mezoterapii od 2500 Kč. Plastické operace očních víček provádíme za 15000 Kč, zákroky zajišťuje zkušený oční chirurg s dlouholetou praxí.
         </p>
-        <h3>Kvalitní péče za справедlivé ceny</h3>
+        <h3>Kvalitní péče za spravedlivé ceny</h3>
         <p>
           Všechny naše služby jsou poskytovány odborníky s využitím moderních technologií. Ceny jsou finální včetně DPH bez skrytých poplatků. Pro některá vyšetření je možné využít příspěvek zdravotní pojišťovny na doporučení lékaře.
         </p>

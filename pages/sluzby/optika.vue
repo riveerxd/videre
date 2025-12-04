@@ -65,11 +65,9 @@ addServiceSchema({
 })
 
 // Define OG Image
-defineOgImageComponent('NuxtSeo', {
-  
+defineOgImageComponent('OgImageCustom', {
   title: 'Oční optika',
-  description: 'Dioptrické brýle od 218 Kč s doživotní zárukou',
-  siteName: 'Videre.cz', siteLogo: 'https://videre.cz/logo.png', theme: '#0F766E', colorMode: 'light'
+  description: 'Dioptrické brýle od 218 Kč s doživotní zárukou'
 })
 
 // FAQ schema for optika
@@ -85,6 +83,14 @@ addFAQSchema([
   {
     question: 'Jakou záruku poskytujete na brýle?',
     answer: 'Na všechny brýle poskytujeme doživotní záruku. V případě poškození provedeme opravu nebo výměnu.'
+  },
+  {
+    question: 'Potřebuji k nákupu brýlí předpis od lékaře?',
+    answer: 'Pro nákup dioptrických brýlí je potřeba znát parametry Vaší zrakové vady. Pokud nemáte aktuální předpis, můžete u nás absolvovat oční vyšetření a ihned si vybrat brýle.'
+  },
+  {
+    question: 'Kolik modelů obrub máte na výběr?',
+    answer: 'V naší optice nabízíme více než 130 modelů brýlových obrub různých stylů, materiálů a cenových kategorií. Všechny si můžete vyzkoušet přímo na místě.'
   }
 ])
 
@@ -161,10 +167,16 @@ const getIcon = (iconName: string) => {
   <div class="min-h-screen">
     <article>
       <!-- Page Header -->
-      <header class="py-12 md:py-16">
-        <div class="container mx-auto px-6 md:px-8 lg:px-12 xl:px-24">
+      <header class="relative py-24 md:py-32 overflow-hidden">
+        <!-- Background decorative blobs -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <div class="absolute top-[10%] left-[10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]" />
+          <div class="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] bg-accent/5 rounded-full blur-[100px]" />
+        </div>
+
+        <div class="container relative z-10 mx-auto px-6 md:px-8 lg:px-12 xl:px-24">
           <Motion tag="div" v-bind="fadeInUp" class="text-center max-w-3xl mx-auto">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
               Oční optika
             </h1>
             <p class="text-lg text-muted-foreground mb-6">

@@ -18,7 +18,6 @@ import {
   NavigationMenuContent,
 } from '~/components/ui/navigation-menu'
 import { ChevronDown } from 'lucide-vue-next'
-import ClinicChoiceModal from '~/components/ClinicChoiceModal.vue'
 
 // Navigation structure with dropdowns
 interface SubLink {
@@ -52,13 +51,13 @@ const navItems: NavItem[] = [
   // { label: 'Blog', href: '/blog' }, // Temporarily disabled for build
   { label: 'Ceník', href: '/cenik' },
   { label: 'Náš tým', href: '/nas-tym' },
+  { label: 'Partneři', href: '/partneri' },
   // { label: 'Galerie', href: '/galerie' }, // Temporarily disabled for build
   // { label: 'Kontaktujte nás', href: '/kontakt' }, // Temporarily disabled for build
 ]
 
 // Mobile menu state
 const isMobileMenuOpen = ref(false)
-const isClinicModalOpen = ref(false)
 const mobileDropdowns = ref<Record<string, boolean>>({})
 
 const toggleMobileDropdown = (label: string) => {
@@ -77,6 +76,40 @@ const { fadeInDown, stagger, fadeInUpShort } = useAnimations()
 
 // Scroll state for transparent -> solid background
 const isScrolled = ref(false)
+
+const scrollToOrdinace = () => {
+  isMobileMenuOpen.value = false
+
+  const target = document.getElementById('ordinace')
+  if (!target) {
+    navigateTo('/#ordinace')
+    return
+  }
+
+  const start = window.scrollY
+  const targetRect = target.getBoundingClientRect()
+  const targetCenter = targetRect.top + start + (targetRect.height / 2)
+  const viewportCenter = window.innerHeight / 2
+  const end = targetCenter - viewportCenter
+  const duration = 1200
+  const startTime = performance.now()
+
+  const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
+
+  const animate = (currentTime: number) => {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    const eased = easeOutQuart(progress)
+
+    window.scrollTo(0, start + (end - start) * eased)
+
+    if (progress < 1) {
+      requestAnimationFrame(animate)
+    }
+  }
+
+  requestAnimationFrame(animate)
+}
 
 onMounted(() => {
   const handleScroll = () => {
@@ -111,14 +144,16 @@ onMounted(() => {
             tag="div"
             :whileHover="{ scale: 1.05 }"
             :whileTap="{ scale: 0.95 }"
-            class="relative w-10 h-10 md:w-12 md:h-12"
+            class="relative flex-shrink-0"
           >
-            <img
+            <NuxtImg
               src="/logo.png"
-              alt="Videre.cz logo"
-              class="w-full h-full object-contain"
-              width="48"
+              alt="Oční klinika Videre - logo"
+              class="h-8 md:h-10 w-auto"
+              width="80"
               height="48"
+              format="webp"
+              loading="eager"
             />
           </Motion>
           <span class="text-xl md:text-2xl font-bold transition-colors duration-300 text-foreground group-hover:text-primary">
@@ -188,7 +223,7 @@ onMounted(() => {
             class="ml-4"
           >
             <Button
-              @click="isClinicModalOpen = true"
+              @click="scrollToOrdinace"
               class="bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-primary/25 transition-all duration-300 rounded-full px-6"
             >
               Zavolejte nám
@@ -303,7 +338,7 @@ onMounted(() => {
                 <!-- Mobile CTA -->
                 <Motion tag="div" v-bind="fadeInUpShort" class="mt-4 px-4">
                   <Button
-                    @click="() => { isMobileMenuOpen = false; isClinicModalOpen = true }"
+                    @click="scrollToOrdinace"
                     class="w-full bg-primary hover:bg-primary/90 text-white shadow-lg"
                   >
                     Zavolejte nám
@@ -316,8 +351,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <ClinicChoiceModal v-model:open="isClinicModalOpen" />
-  </nav>
+    </nav>
 </template>
 
 <style scoped>
