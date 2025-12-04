@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
-import { Vue3Marquee } from 'vue3-marquee'
 
 const { fadeInUp } = useAnimations()
 
 const currentYear = new Date().getFullYear()
 
 const insuranceLogos = [
-  { src: '/VZP.png', alt: 'Všeobecná zdravotní pojišťovna' },
-  { src: '/ozp.png', alt: 'Oborová zdravotní pojišťovna' },
-  { src: '/vozp.png', alt: 'Vojenská zdravotní pojišťovna' },
-  { src: '/zpmv.png', alt: 'Zdravotní pojišťovna ministerstva vnitra' },
-  { src: '/czpz.png', alt: 'Česká průmyslová zdravotní pojišťovna' },
-  { src: '/rbp.jpg', alt: 'RBP zdravotní pojišťovna' },
-  { src: '/pvzp.webp', alt: 'Pojišťovna VZP' }
+  { src: '/VZP.png', alt: 'Všeobecná zdravotní pojišťovna', scale: 1 },
+  { src: '/ozp.png', alt: 'Oborová zdravotní pojišťovna', scale: 1 },
+  { src: '/vozp.png', alt: 'Vojenská zdravotní pojišťovna', scale: 1 },
+  { src: '/zpmv.png', alt: 'Zdravotní pojišťovna ministerstva vnitra', scale: 1 },
+  { src: '/czpz.png', alt: 'Česká průmyslová zdravotní pojišťovna', scale: 1 },
+  { src: '/rbp.png', alt: 'RBP zdravotní pojišťovna', scale: 1.4 },
+  { src: '/pvzp.webp', alt: 'Pojišťovna VZP', scale: 1 }
 ]
 
 const links = [
@@ -42,21 +41,24 @@ const contact = {
       <!-- Insurance Logo Marquee -->
       <div class="mb-12 overflow-hidden">
         <p class="text-center text-sm text-muted-foreground mb-6">Spolupracujeme se zdravotními pojišťovnami</p>
-        <Vue3Marquee :duration="25" :pause-on-hover="true" :clone="true" class="py-6 !overflow-hidden">
-          <div
-            v-for="(logo, index) in insuranceLogos"
-            :key="index"
-            class="mx-8 flex items-center justify-center"
-          >
-            <NuxtImg
-              :src="logo.src"
-              :alt="logo.alt"
-              class="h-8 md:h-10 w-auto object-contain max-w-[120px] md:max-w-[150px]"
-              height="48"
-              loading="lazy"
-            />
+        <div class="marquee-container py-6">
+          <div class="marquee-track">
+            <div
+              v-for="(logo, index) in [...insuranceLogos, ...insuranceLogos, ...insuranceLogos]"
+              :key="index"
+              class="marquee-item"
+            >
+              <NuxtImg
+                :src="logo.src"
+                :alt="logo.alt"
+                class="h-8 md:h-10 w-auto object-contain max-w-[120px] md:max-w-[150px]"
+                :style="{ transform: `scale(${logo.scale})` }"
+                height="48"
+                loading="lazy"
+              />
+            </div>
           </div>
-        </Vue3Marquee>
+        </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         <!-- Brand -->
@@ -171,6 +173,46 @@ const contact = {
 @supports (backdrop-filter: blur(12px)) {
   .footer-bg {
     background-color: hsl(var(--background) / 0.6);
+  }
+}
+
+/* CSS-only marquee - no flash on load */
+.marquee-container {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
   }
 }
 </style>
