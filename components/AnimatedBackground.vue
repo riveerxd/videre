@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Desktop: 30 animated blobs
 const blobs = Array.from({ length: 30 }, (_, i) => {
   const size = Math.random() * 150 + 150; // 150-300px
   const top = Math.random() * 100;
@@ -22,10 +23,19 @@ const blobs = Array.from({ length: 30 }, (_, i) => {
     }
   };
 });
+
+// Mobile: 5 static blobs (no animation)
+const mobileBlobs = [
+  { id: 0, style: { width: '200px', height: '200px', top: '10%', left: '5%', opacity: 0.25 } },
+  { id: 1, style: { width: '250px', height: '250px', top: '60%', left: '70%', opacity: 0.2 } },
+  { id: 2, style: { width: '180px', height: '180px', top: '30%', left: '80%', opacity: 0.3 } },
+  { id: 3, style: { width: '220px', height: '220px', top: '75%', left: '15%', opacity: 0.22 } },
+  { id: 4, style: { width: '160px', height: '160px', top: '45%', left: '40%', opacity: 0.18 } },
+];
 </script>
 
 <template>
-  <!-- Hidden on mobile for performance -->
+  <!-- Desktop: 30 animated blobs -->
   <div class="hidden md:block fixed inset-0 overflow-hidden pointer-events-none z-0 bg-background">
     <div
       v-for="blob in blobs"
@@ -35,8 +45,15 @@ const blobs = Array.from({ length: 30 }, (_, i) => {
       :style="blob.style"
     />
   </div>
-  <!-- Solid background fallback for mobile -->
-  <div class="md:hidden fixed inset-0 pointer-events-none z-0 bg-background" />
+  <!-- Mobile: 5 static blobs (no animation for performance) -->
+  <div class="md:hidden fixed inset-0 overflow-hidden pointer-events-none z-0 bg-background">
+    <div
+      v-for="blob in mobileBlobs"
+      :key="blob.id"
+      class="absolute bg-primary rounded-full blur-3xl"
+      :style="blob.style"
+    />
+  </div>
 </template>
 
 <style>
