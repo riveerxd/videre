@@ -52,17 +52,17 @@ onMounted(() => {
     class="relative w-full py-24 md:py-32 lg:py-40 overflow-hidden"
     :class="{ 'animations-running': isImageLoaded }"
   >
-    <!-- Background decorative blobs -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+    <!-- Background decorative blobs - hidden on mobile for performance -->
+    <div class="hidden md:block absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
       <div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px]" />
       <div class="absolute top-[20%] -right-[10%] w-[40%] h-[60%] bg-accent/5 rounded-full blur-[100px]" />
     </div>
 
     <div class="container relative z-10 mx-auto px-6 md:px-8 lg:px-12 xl:px-24">
-      <div class="relative bg-background/80 backdrop-blur-sm rounded-[2rem] shadow-2xl overflow-hidden ">
+      <div class="relative bg-background md:bg-background/80 md:backdrop-blur-sm rounded-[2rem] shadow-2xl overflow-hidden ">
         <div class="flex flex-col lg:flex-row items-stretch">
           <!-- Content Section - 45% width on desktop -->
-          <div class="relative w-full lg:w-[45%] order-2 lg:order-1 flex flex-col justify-center items-start p-8 md:p-12 lg:p-16 xl:p-20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+          <div class="relative w-full lg:w-[45%] order-2 lg:order-1 flex flex-col justify-center items-start p-8 md:p-12 lg:p-16 xl:p-20 bg-background md:bg-background/95 md:backdrop-blur md:supports-[backdrop-filter]:bg-background/60">
             
             <!-- Badge -->
             <div class="mb-6 animate-enter" style="--stagger: 1">

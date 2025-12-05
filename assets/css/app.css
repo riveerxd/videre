@@ -54,3 +54,14 @@
     text-rendering: optimizeLegibility;
   }
 }
+
+/* Performance: Disable expensive blur effects on mobile devices */
+@layer utilities {
+  @media (max-width: 767px) {
+    .blur-\[100px\],
+    .blur-\[120px\] {
+      filter: none !important;
+      opacity: 0.3;
+    }
+  }
+}

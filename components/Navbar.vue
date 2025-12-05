@@ -369,14 +369,21 @@ onMounted(() => {
 }
 
 .navbar--scrolled {
-  background-color: hsl(var(--background) / 0.7);
-  backdrop-filter: blur(12px);
+  background-color: hsl(var(--background) / 0.95);
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.03), 0 1px 0 0 rgb(0 0 0 / 0.05);
 }
 
-@supports (backdrop-filter: blur(12px)) {
+/* Enable backdrop blur only on larger screens for performance */
+@media (min-width: 768px) {
   .navbar--scrolled {
-    background-color: hsl(var(--background) / 0.6);
+    background-color: hsl(var(--background) / 0.7);
+    backdrop-filter: blur(12px);
+  }
+
+  @supports (backdrop-filter: blur(12px)) {
+    .navbar--scrolled {
+      background-color: hsl(var(--background) / 0.6);
+    }
   }
 }
 </style>

@@ -25,7 +25,8 @@ const blobs = Array.from({ length: 30 }, (_, i) => {
 </script>
 
 <template>
-  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-background">
+  <!-- Hidden on mobile for performance -->
+  <div class="hidden md:block fixed inset-0 overflow-hidden pointer-events-none z-0 bg-background">
     <div
       v-for="blob in blobs"
       :key="blob.id"
@@ -34,6 +35,8 @@ const blobs = Array.from({ length: 30 }, (_, i) => {
       :style="blob.style"
     />
   </div>
+  <!-- Solid background fallback for mobile -->
+  <div class="md:hidden fixed inset-0 pointer-events-none z-0 bg-background" />
 </template>
 
 <style>
