@@ -11,7 +11,7 @@ const locations = [
     city: 'Praha 8',
     zip: '182 00',
     image: '/poliklinika_cumpelikova.jpg',
-    mapUrl: 'https://mapy.cz/zakladni?q=%C4%8Cumpel%C3%ADkov%C3%A1+1764%2F2+Praha+8',
+    pageUrl: '/ordinace/cumpelikova',
     phone: '+420 603 141 490',
     email: 'ocnicumpelikova@email.cz',
     hours: [
@@ -28,7 +28,7 @@ const locations = [
     city: 'Praha 4',
     zip: '142 00',
     image: '/poliklinika_zarubova.jpg',
-    mapUrl: 'https://mapy.cz/zakladni?q=Z%C3%A1rubova+498%2F31+Praha+4',
+    pageUrl: '/ordinace/zarubova',
     phone: '+420 776 471 040',
     email: 'videresestra@email.cz',
     hours: [
@@ -186,15 +186,11 @@ const locations = [
                   Zavolat
                 </Motion>
 
-                <!-- Map Button -->
-                <Motion
-                  tag="a"
-                  :href="location.mapUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  v-bind="buttonPremium"
-                  class="flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-border bg-background hover:bg-accent/10 hover:border-primary/30 transition-all font-semibold text-sm text-foreground hover:-translate-y-0.5"
-                  aria-label="Zobrazit na mapě"
+                <!-- Details Button -->
+                <NuxtLink
+                  :to="location.pageUrl"
+                  class="flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-border bg-background hover:bg-primary/5 hover:border-primary/30 transition-all font-semibold text-sm text-foreground hover:-translate-y-0.5 active:bg-primary/5"
+                  aria-label="Více informací o ordinaci"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -204,10 +200,10 @@ const locations = [
                     stroke="currentColor"
                     stroke-width="2"
                   >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Mapa
-                </Motion>
+                  Více info
+                </NuxtLink>
               </div>
             </CardContent>
           </Card>
