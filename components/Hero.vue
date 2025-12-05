@@ -12,11 +12,16 @@ const scrollToOrdinace = (e: Event) => {
   const target = document.getElementById('ordinace')
   if (!target) return
 
+  const isMobile = window.innerWidth < 768
   const start = window.scrollY
   const targetRect = target.getBoundingClientRect()
-  const targetCenter = targetRect.top + start + (targetRect.height / 2)
-  const viewportCenter = window.innerHeight / 2
-  const end = targetCenter - viewportCenter
+
+  // Mobile: scroll to top with offset for navbar, Desktop: center in viewport
+  const navbarHeight = 80
+  const end = isMobile
+    ? targetRect.top + start - navbarHeight
+    : targetRect.top + start + (targetRect.height / 2) - (window.innerHeight / 2)
+
   const duration = 1200
   const startTime = performance.now()
 
