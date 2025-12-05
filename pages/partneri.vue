@@ -55,29 +55,30 @@ useHead({
               medicalSpecialty: 'Dentistry',
               description: 'Moderní zubní klinika poskytující komplexní stomatologickou péči s využitím nejnovějších technologií.'
             }
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            item: {
-              '@type': 'MedicalClinic',
-              name: 'Clinic M',
-              url: 'https://www.clinicm.cz',
-              medicalSpecialty: 'Ophthalmology',
-              description: 'Specializované centrum pro diagnostiku a léčbu očních onemocnění s důrazem na individuální přístup.'
-            }
-          },
-          {
-            '@type': 'ListItem',
-            position: 3,
-            item: {
-              '@type': 'MedicalClinic',
-              name: 'Oční Petřiny',
-              url: 'https://www.ocnipetriny.cz',
-              medicalSpecialty: 'Ophthalmology',
-              description: 'Oční ambulance poskytující široké spektrum oftalmologických služeb pro pacienty všech věkových kategorií.'
-            }
           }
+          // Hidden partners - kept for future use:
+          // {
+          //   '@type': 'ListItem',
+          //   position: 2,
+          //   item: {
+          //     '@type': 'MedicalClinic',
+          //     name: 'Clinic M',
+          //     url: 'https://www.clinicm.cz',
+          //     medicalSpecialty: 'Ophthalmology',
+          //     description: 'Specializované centrum pro diagnostiku a léčbu očních onemocnění s důrazem na individuální přístup.'
+          //   }
+          // },
+          // {
+          //   '@type': 'ListItem',
+          //   position: 3,
+          //   item: {
+          //     '@type': 'MedicalClinic',
+          //     name: 'Oční Petřiny',
+          //     url: 'https://www.ocnipetriny.cz',
+          //     medicalSpecialty: 'Ophthalmology',
+          //     description: 'Oční ambulance poskytující široké spektrum oftalmologických služeb pro pacienty všech věkových kategorií.'
+          //   }
+          // }
         ]
       })
     }
@@ -91,21 +92,22 @@ const partners = [
     image: 'https://www.nclinic.cz/images/preview.png',
     description: 'Moderní zubní klinika poskytující komplexní stomatologickou péči s využitím nejnovějších technologií.',
     services: ['Zubní implantáty', 'Estetická stomatologie', 'Dentální hygiena']
-  },
-  {
-    name: 'Clinic M',
-    url: 'https://www.clinicm.cz',
-    image: 'https://www.clinicm.cz/images/preview.png',
-    description: 'Specializované centrum pro diagnostiku a léčbu očních onemocnění s důrazem na individuální přístup k pacientům.',
-    services: ['Diagnostika očí', 'Léčba glaukomu', 'Kataraktová chirurgie']
-  },
-  {
-    name: 'Oční Petřiny',
-    url: 'https://www.ocnipetriny.cz',
-    image: 'https://www.ocnipetriny.cz/images/preview.png',
-    description: 'Oční ambulance poskytující široké spektrum oftalmologických služeb pro pacienty všech věkových kategorií.',
-    services: ['Preventivní prohlídky', 'Dětská oftalmologie', 'Korekce zraku']
   }
+  // Hidden partners - kept for future use:
+  // {
+  //   name: 'Clinic M',
+  //   url: 'https://www.clinicm.cz',
+  //   image: 'https://www.clinicm.cz/images/preview.png',
+  //   description: 'Specializované centrum pro diagnostiku a léčbu očních onemocnění s důrazem na individuální přístup k pacientům.',
+  //   services: ['Diagnostika očí', 'Léčba glaukomu', 'Kataraktová chirurgie']
+  // },
+  // {
+  //   name: 'Oční Petřiny',
+  //   url: 'https://www.ocnipetriny.cz',
+  //   image: 'https://www.ocnipetriny.cz/images/preview.png',
+  //   description: 'Oční ambulance poskytující široké spektrum oftalmologických služeb pro pacienty všech věkových kategorií.',
+  //   services: ['Preventivní prohlídky', 'Dětská oftalmologie', 'Korekce zraku']
+  // }
 ]
 </script>
 
@@ -128,16 +130,17 @@ const partners = [
             </p>
           </Motion>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div class="flex flex-wrap justify-center gap-8 mb-16">
             <Motion
               v-for="partner in partners"
               :key="partner.name"
               tag="div"
               v-bind="fadeInUp"
+              class="w-full max-w-md"
             >
               <Card class="h-full border-0 bg-background/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 rounded-[2rem] overflow-hidden ring-1 ring-border/50 group">
                 <!-- Partner Image -->
-                <div class="relative w-full h-48 overflow-hidden bg-muted">
+                <div class="relative w-full h-64 overflow-hidden bg-muted">
                   <NuxtImg
                     v-if="partner.image"
                     :src="partner.image"
@@ -238,6 +241,7 @@ const partners = [
         <p>
           NClinic je moderní zubní klinika poskytující komplexní stomatologickou péči. Nabízí nejnovější technologie pro zubní implantáty, estetickou stomatologii a dentální hygienu. Spolupracujeme pro zajištění komplexní zdravotní péče našim pacientům.
         </p>
+        <!-- Hidden partners SEO content - kept for future use:
         <h3>Clinic M - Léčba očních onemocnění</h3>
         <p>
           Clinic M se specializuje na diagnostiku a léčbu závažných očních onemocnění. Jejich odborníci se zaměřují na léčbu glaukomu, kataraktovou chirurgii a péči o pacienty s diabetickou retinopatií. Individuální přístup k pacientům je jejich hlavní předností.
@@ -246,6 +250,7 @@ const partners = [
         <p>
           Oční ambulance Petřiny poskytuje široké spektrum oftalmologických služeb pro pacienty všech věkových kategorií. Specializují se na preventivní prohlídky, dětskou oftalmologii a korekci zraku. Jsou ideální volbou pro rodinnou oční péči.
         </p>
+        -->
         <h3>Výhody spolupráce očních klinik</h3>
         <p>
           Síť spolupracujících očních klinik přináší pacientům mnoho výhod: rychlejší přístup ke specializovaným zákrokům, sdílení odborných znalostí mezi lékaři, kontinuitu péče při přechodu mezi zařízeními a možnost druhého názoru od dalších odborníků. Všechny partnerské kliniky sdílejí stejné hodnoty - kvalitní péči, moderní technologie a individuální přístup k pacientům.
