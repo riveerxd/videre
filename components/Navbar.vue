@@ -137,7 +137,7 @@ onMounted(() => {
         <!-- Logo and Brand -->
         <NuxtLink
           to="/"
-          class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
+          class="flex items-center gap-3 group focus:outline-none rounded-lg"
           aria-label="Videre.cz - Úvodní stránka"
         >
           <Motion
@@ -156,7 +156,7 @@ onMounted(() => {
               loading="eager"
             />
           </Motion>
-          <span class="text-xl md:text-2xl font-bold transition-colors duration-300 text-foreground group-hover:text-primary">
+          <span class="text-xl md:text-2xl font-bold text-foreground">
             Videre
           </span>
         </NuxtLink>
