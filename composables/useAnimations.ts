@@ -277,7 +277,7 @@ export const useAnimations = () => {
     }
   })
 
-  // Card entrance - elegant and premium
+  // Card entrance - elegant and premium (hover effects handled by Tailwind on the card)
   const cardEntrance = createAnimation({
     initial: { opacity: 0, y: 30 },
     whileInView: {
@@ -285,12 +285,7 @@ export const useAnimations = () => {
       y: 0,
       transition: { duration: 0.7, ease: easings.smooth }
     },
-    viewport: { once: true, margin: '-50px' },
-    whileHover: {
-      y: -6,
-      boxShadow: '0 12px 40px rgba(0, 0, 0, 0.1)',
-      transition: { duration: 0.3 }
-    }
+    viewport: { once: true, margin: '-50px' }
   })
 
   // Button interaction - complete tactile feel

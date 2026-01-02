@@ -84,7 +84,7 @@ const services = [
 
 const technologies = [
   {
-    name: 'Aplanační tonometr',
+    name: 'Bezkontaktní tonometr',
     description: 'Měření nitroočního tlaku je základem v péči o glaukomové pacienty (zelený zákal) a patří též k základnímu preventivnímu programu v naší ordinaci. Každý, kdo dovršil 40-ti let věku, by měl toto vyšetření podstoupit…'
   },
   {

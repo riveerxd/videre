@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card'
+import { CardContent, CardHeader, CardTitle } from '~/components/ui/card'
 
 const { fadeInUp, stagger, cardEntrance } = useAnimations()
 
 const news = [
+  {
+    title: 'Dovolená v ordinacích',
+    description: 'Do 4. 1. 2026 včetně máme v našich ordinacích dovolenou. Děkujeme za pochopení a přejeme krásné svátky.',
+    date: '2025-12-20',
+    icon: 'calendar'
+  },
   {
     title: 'Příjímáme nové pacienty',
     description: 'Jsme rádi, že můžeme přijímat nové pacienty do naší oční kliniky. Nabízíme komplexní péči o Vaše oči s využitím nejmodernějších technologií.',
@@ -38,11 +44,22 @@ const news = [
           :key="index"
           tag="div"
           v-bind="cardEntrance"
+          class="h-full group rounded-2xl border border-border/50 bg-background hover:border-primary/20 hover:shadow-xl transition-all duration-300 overflow-hidden"
         >
-          <Card class="h-full group hover:shadow-xl transition-all duration-300 border border-border/50 bg-background hover:border-primary/20 rounded-2xl overflow-hidden">
             <CardHeader class="p-6 pb-4">
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
+                  <svg
+                    v-if="item.icon === 'calendar'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                   <svg
                     v-if="item.icon === 'user-plus'"
                     xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +88,6 @@ const news = [
                 {{ item.description }}
               </p>
             </CardContent>
-          </Card>
         </Motion>
       </Motion>
     </div>
