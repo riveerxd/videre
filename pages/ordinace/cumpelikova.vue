@@ -216,7 +216,7 @@ const location = {
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
-                    <a :href="`tel:${location.phone}`" class="text-lg text-foreground hover:text-primary transition-colors font-medium">
+                    <a :href="`tel:${location.phone.replace(/\s/g, '')}`" class="text-lg text-foreground hover:text-primary transition-colors font-medium">
                       {{ location.phone }}
                     </a>
                   </div>
@@ -240,44 +240,44 @@ const location = {
                   </div>
 
                   <div class="grid grid-cols-2 gap-4 pt-4">
-                    <Motion
-                      tag="a"
-                      :href="`tel:${location.phone}`"
-                      v-bind="buttonPrimarySmooth"
-                      class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg"
-                      aria-label="Zavolejte nám"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
+                    <Motion v-bind="buttonPrimarySmooth">
+                      <a
+                        :href="`tel:${location.phone.replace(/\s/g, '')}`"
+                        class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg"
+                        aria-label="Zavolejte nám"
                       >
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      Zavolat
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        Zavolat
+                      </a>
                     </Motion>
 
-                    <Motion
-                      tag="a"
-                      :href="`mailto:${location.email}`"
-                      v-bind="buttonSmooth"
-                      class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border bg-background font-semibold text-foreground"
-                      aria-label="Napište nám email"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
+                    <Motion v-bind="buttonSmooth">
+                      <a
+                        :href="`mailto:${location.email}`"
+                        class="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border bg-background font-semibold text-foreground"
+                        aria-label="Napište nám email"
                       >
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      Email
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        Email
+                      </a>
                     </Motion>
                   </div>
                 </CardContent>
