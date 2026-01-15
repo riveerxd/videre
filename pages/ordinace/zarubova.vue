@@ -88,7 +88,7 @@ useHead({
             '@type': 'OpeningHoursSpecification',
             dayOfWeek: 'Thursday',
             opens: '08:00',
-            closes: '17:00'
+            closes: '18:00'
           },
           {
             '@type': 'OpeningHoursSpecification',
@@ -116,7 +116,7 @@ const location = {
     { day: 'Pondělí', time: '13:00 - 19:00' },
     { day: 'Úterý', time: '8:00 - 12:30 | 13:00 - 17:00' },
     { day: 'Středa', time: '8:00 - 12:30 | 13:00 - 15:00' },
-    { day: 'Čtvrtek', time: '8:00 - 12:30 | 13:00 - 17:00' },
+    { day: 'Čtvrtek', time: '8:00 - 12:30 | 13:00 - 18:00' },
     { day: 'Pátek', time: '8:00 - 13:00' }
   ],
   mapEmbedUrl: 'https://www.google.com/maps?q=Zárubova+498/31,+142+00+Praha+12&output=embed',
