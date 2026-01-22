@@ -15,9 +15,9 @@ useHead({
 // SEO Meta tags
 useSeoMeta({
   title: 'Ceník služeb Praha - Oční vyšetření, Botox, operace víček | Oční klinika Videre',
-  description: 'Přehledný ceník očních služeb: vyšetření na řidičský průkaz 800 Kč, zbrojní průkaz 1500 Kč, OCT sítnice 700 Kč, Botox od 3000 Kč, výplně 4999 Kč/ml, plastika víček 15000 Kč. Transparentní ceny bez skrytých poplatků v Praze.',
+  description: 'Přehledný ceník očních služeb: vyšetření na řidičský průkaz 800 Kč, zbrojní průkaz 1500 Kč, OCT sítnice 700 Kč, Botox od 3000 Kč, výplně 4999 Kč/ml, plastika víček 17000 Kč. Transparentní ceny bez skrytých poplatků v Praze.',
   ogTitle: 'Ceník služeb Praha - Oční vyšetření, Botox, operace víček | Videre',
-  ogDescription: 'Ceník očních vyšetření a estetické medicíny: řidičský průkaz 800 Kč, Botox od 3000 Kč, plastika víček 15000 Kč. Transparentní ceny v Praze.',
+  ogDescription: 'Ceník očních vyšetření a estetické medicíny: řidičský průkaz 800 Kč, Botox od 3000 Kč, plastika víček 17000 Kč. Transparentní ceny v Praze.',
   ogImage: 'https://videre.cz/heroimage.webp',
   ogUrl: 'https://videre.cz/cenik',
   ogLocale: 'cs_CZ',
@@ -54,7 +54,7 @@ addFAQSchema([
   },
   {
     question: 'Kolik stojí plastická operace víček?',
-    answer: 'Plastická operace horních nebo dolních víček stojí 15 000 Kč. Cena zahrnuje předoperační konzultaci, samotný zákrok a pooperační kontrolu.'
+    answer: 'Plastická operace horních nebo dolních víček stojí 17 000 Kč. Cena zahrnuje předoperační konzultaci, samotný zákrok a pooperační kontrolu.'
   },
   {
     question: 'Hradí pojišťovna oční vyšetření?',
@@ -140,7 +140,7 @@ useHead({
               name: 'Plastická operace očních víček',
               procedureType: 'Surgical'
             },
-            price: '15000',
+            price: '17000',
             priceCurrency: 'CZK',
             priceValidUntil: '2025-12-31'
           }
@@ -264,12 +264,12 @@ const aestheticServices = [
 const surgeryServices = [
   {
     name: 'Plastická operace horních víček',
-    price: '15 000 Kč',
+    price: '17 000 Kč',
     note: null
   },
   {
     name: 'Plastická operace dolních víček',
-    price: '15 000 Kč',
+    price: '17 000 Kč',
     note: null
   }
 ]
@@ -603,7 +603,7 @@ const surgeryServices = [
         </p>
         <h3>Estetická medicína a plastická chirurgie</h3>
         <p>
-          V oblasti estetické medicíny poskytujeme aplikace botoxu od 3000 Kč, výplně kyselinou hyaluronovou za 4999 Kč za ml a mezoterapii od 2500 Kč. Plastické operace očních víček provádíme za 15000 Kč, zákroky zajišťuje zkušený oční chirurg s dlouholetou praxí.
+          V oblasti estetické medicíny poskytujeme aplikace botoxu od 3000 Kč, výplně kyselinou hyaluronovou za 4999 Kč za ml a mezoterapii od 2500 Kč. Plastické operace očních víček provádíme za 17000 Kč, zákroky zajišťuje zkušený oční chirurg s dlouholetou praxí.
         </p>
         <h3>Kvalitní péče za spravedlivé ceny</h3>
         <p>

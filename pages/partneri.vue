@@ -55,6 +55,17 @@ useHead({
               medicalSpecialty: 'Dentistry',
               description: 'Moderní zubní klinika poskytující komplexní stomatologickou péči s využitím nejnovějších technologií.'
             }
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            item: {
+              '@type': 'MedicalClinic',
+              name: 'Videre 2',
+              url: 'https://www.videre2.cz',
+              medicalSpecialty: 'Ophthalmology',
+              description: 'Precizní péče o zrak s lidským přístupem. Komplexní oční vyšetření s využitím moderních diagnostických technologií.'
+            }
           }
           // Hidden partners - kept for future use:
           // {
@@ -92,6 +103,13 @@ const partners = [
     image: 'https://www.nclinic.cz/images/preview.png',
     description: 'Moderní zubní klinika poskytující komplexní stomatologickou péči s využitím nejnovějších technologií.',
     services: ['Zubní implantáty', 'Estetická stomatologie', 'Dentální hygiena']
+  },
+  {
+    name: 'Videre 2',
+    url: 'https://www.videre2.cz',
+    image: 'https://www.videre2.cz/images/preview.png',
+    description: 'Precizní péče o zrak s lidským přístupem. Komplexní oční vyšetření s využitím moderních diagnostických technologií a individuálním přístupem k pacientům.',
+    services: ['Komplexní oční péče', 'OCT diagnostika', 'Plastika víček']
   }
   // Hidden partners - kept for future use:
   // {
@@ -138,9 +156,9 @@ const partners = [
               v-bind="fadeInUp"
               class="w-full max-w-md"
             >
-              <Card class="h-full border-0 bg-background/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 rounded-[2rem] overflow-hidden ring-1 ring-border/50 group">
+              <Card class="h-full border-0 bg-background/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 rounded-[2rem] overflow-hidden ring-1 ring-border/50 group flex flex-col">
                 <!-- Partner Image -->
-                <div class="relative w-full h-64 overflow-hidden bg-muted">
+                <div class="relative w-full h-64 overflow-hidden bg-muted shrink-0">
                   <NuxtImg
                     v-if="partner.image"
                     :src="partner.image"
@@ -164,45 +182,47 @@ const partners = [
                     </svg>
                   </div>
                 </div>
-                <CardHeader class="p-8 pb-4">
+                <CardHeader class="p-8 pb-4 shrink-0">
                   <CardTitle class="text-2xl font-bold">{{ partner.name }}</CardTitle>
                 </CardHeader>
-                <CardContent class="p-8 pt-4 space-y-6">
-                  <p class="text-muted-foreground leading-relaxed">
+                <CardContent class="p-8 pt-4 flex flex-col flex-1">
+                  <p class="text-muted-foreground leading-relaxed min-h-[5rem]">
                     {{ partner.description }}
                   </p>
 
-                  <div class="flex flex-wrap gap-2">
+                  <div class="flex flex-wrap gap-2 mt-6 min-h-[4.5rem]">
                     <span
                       v-for="service in partner.services"
                       :key="service"
-                      class="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full"
+                      class="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full h-fit"
                     >
                       {{ service }}
                     </span>
                   </div>
 
-                  <a
-                    :href="partner.url"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    :title="`Navštívit webové stránky ${partner.name} - oční klinika`"
-                    :aria-label="`Přejít na web partnerské oční kliniky ${partner.name}`"
-                    class="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
-                  >
-                    <span>Navštívit {{ partner.name }}</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      aria-hidden="true"
+                  <div class="mt-auto pt-8">
+                    <a
+                      :href="partner.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      :title="`Navštívit webové stránky ${partner.name} - oční klinika`"
+                      :aria-label="`Přejít na web partnerské oční kliniky ${partner.name}`"
+                      class="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
                     >
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
+                      <span>Navštívit {{ partner.name }}</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        aria-hidden="true"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
             </Motion>
