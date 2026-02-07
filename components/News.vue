@@ -44,8 +44,8 @@ const news = [
           :key="index"
           tag="div"
           v-bind="cardEntrance"
-          class="h-full group rounded-2xl border border-border/50 bg-background hover:border-primary/20 hover:shadow-xl transition-all duration-300 overflow-hidden"
         >
+          <div class="h-full group rounded-2xl border border-border/50 bg-background hover:border-primary/20 hover:shadow-xl transition-all duration-300 overflow-hidden">
             <CardHeader class="p-6 pb-4">
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 rounded-2xl bg-primary/5 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
@@ -88,6 +88,7 @@ const news = [
                 {{ item.description }}
               </p>
             </CardContent>
+          </div>
         </Motion>
       </Motion>
     </div>
