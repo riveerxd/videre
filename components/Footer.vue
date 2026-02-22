@@ -158,7 +158,7 @@ const contact = {
 
       <div class="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
         <p>&copy; {{ currentYear }} Videre. Všechna práva vyhrazena.</p>
-        <span>Made by <span class="text-primary font-medium">river</span></span>
+        <span>Made by <a href="https://riveer.cz/" target="_blank" rel="noopener noreferrer" class="text-primary font-medium cursor-pointer hover:underline">river</a></span>
       </div>
     </div>
   </footer>
