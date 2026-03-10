@@ -15,7 +15,7 @@ useHead({
 // SEO Meta tags
 useSeoMeta({
   title: 'Oční lékaři Praha - Náš tým zkušených oftalmologů | Oční klinika Videre',
-  description: 'Tým zkušených oftalmologů Oční kliniky Videre v Praze s více než 150 lety společné praxe. MUDr. Samer Al Marei, MUDr. Irena Svobodová, MUDr. Ingrid Pavlová, MUDr. Ahmed Sayed Ahmed a MUDr. Ivana Divišková. Členové České oftalmologické společnosti, atestovaní odborníci.',
+  description: 'Tým zkušených oftalmologů Oční kliniky Videre v Praze s více než 150 lety společné praxe. MUDr. Samer Al Marei, MUDr. Irena Svobodová, MUDr. Ingrid Pavlová, MUDr. Ahmed Sayed Ahmed a MUDr. Ivana Divišová. Členové České oftalmologické společnosti, atestovaní odborníci.',
   ogTitle: 'Oční lékaři Praha - Náš tým zkušených oftalmologů | Videre',
   ogDescription: 'Tým 5 zkušených oftalmologů s více než 150 lety společné praxe v Praze. Profesionální oční péče na nejvyšší úrovni.',
   ogImage: 'https://videre.cz/almarei.jpeg',
@@ -105,7 +105,7 @@ useHead({
           },
           {
             '@type': 'Physician',
-            name: 'MUDr. Ivana Divišková',
+            name: 'MUDr. Ivana Divišová',
             medicalSpecialty: 'Ophthalmology',
             description: 'Oční lékařka se specializací v oboru oftalmologie druhého stupně.',
             memberOf: {
@@ -202,7 +202,7 @@ const doctors = [
     ]
   },
   {
-    name: 'MUDr. Ivana Divišková',
+    name: 'MUDr. Ivana Divišová',
     title: 'oční lékař',
     image: null,
     education: [
@@ -524,9 +524,9 @@ const doctors = [
         <p>
           MUDr. Ahmed Sayed Ahmed je oční lékař s více než 40 lety praxe. Promoci získal na Masarykově univerzitě v roce 1979 a atestaci z oftalmologie v Českých Budějovicích v roce 1982. Pracoval ve Vojenské nemocnici v Lattakia v Sýrii a na očním oddělení LF nemocnice Lattakia. Vlastní soukromou praxi vede od roku 1986.
         </p>
-        <h3>MUDr. Ivana Divišková</h3>
+        <h3>MUDr. Ivana Divišová</h3>
         <p>
-          MUDr. Ivana Divišková je oční lékařka se specializací v oboru oftalmologie druhého stupně.
+          MUDr. Ivana Divišová je oční lékařka se specializací v oboru oftalmologie druhého stupně.
         </p>
       </section>
     </article>
