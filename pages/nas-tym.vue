@@ -15,15 +15,15 @@ useHead({
 // SEO Meta tags
 useSeoMeta({
   title: 'Oční lékaři Praha - Náš tým zkušených oftalmologů | Oční klinika Videre',
-  description: 'Tým zkušených oftalmologů Oční kliniky Videre v Praze s více než 150 lety společné praxe. MUDr. Samer Al Marei, MUDr. Irena Svobodová, MUDr. Ingrid Pavlová a MUDr. Ahmed Sayed Ahmed. Členové České oftalmologické společnosti, atestovaní odborníci.',
+  description: 'Tým zkušených oftalmologů Oční kliniky Videre v Praze s více než 150 lety společné praxe. MUDr. Samer Al Marei, MUDr. Irena Svobodová, MUDr. Ingrid Pavlová, MUDr. Ahmed Sayed Ahmed a MUDr. Ivana Divišková. Členové České oftalmologické společnosti, atestovaní odborníci.',
   ogTitle: 'Oční lékaři Praha - Náš tým zkušených oftalmologů | Videre',
-  ogDescription: 'Tým 4 zkušených oftalmologů s více než 150 lety společné praxe v Praze. Profesionální oční péče na nejvyšší úrovni.',
+  ogDescription: 'Tým 5 zkušených oftalmologů s více než 150 lety společné praxe v Praze. Profesionální oční péče na nejvyšší úrovni.',
   ogImage: 'https://videre.cz/almarei.jpeg',
   ogUrl: 'https://videre.cz/nas-tym',
   ogLocale: 'cs_CZ',
   twitterCard: 'summary_large_image',
   twitterTitle: 'Oční lékaři Praha - Náš tým zkušených oftalmologů | Videre',
-  twitterDescription: 'Seznamte se s týmem 4 zkušených oftalmologů Oční kliniky Videre v Praze.'
+  twitterDescription: 'Seznamte se s týmem 5 zkušených oftalmologů Oční kliniky Videre v Praze.'
 })
 
 // Breadcrumb structured data
@@ -97,6 +97,17 @@ useHead({
             medicalSpecialty: 'Ophthalmology',
             description: 'Oční lékař s více než 40 lety praxe a atestací z oftalmologie. Člen Syrské oftalmologické společnosti.',
             alumniOf: 'Masarykova univerzita',
+            memberOf: {
+              '@type': 'MedicalOrganization',
+              name: 'Oční klinika Videre',
+              url: 'https://videre.cz'
+            }
+          },
+          {
+            '@type': 'Physician',
+            name: 'MUDr. Ivana Divišková',
+            medicalSpecialty: 'Ophthalmology',
+            description: 'Oční lékařka se specializací v oboru oftalmologie druhého stupně.',
             memberOf: {
               '@type': 'MedicalOrganization',
               name: 'Oční klinika Videre',
@@ -189,6 +200,17 @@ const doctors = [
       'Člen Syrské oftalmologické společnosti',
       'Člen Syrské lékařské komory'
     ]
+  },
+  {
+    name: 'MUDr. Ivana Divišková',
+    title: 'oční lékař',
+    image: null,
+    education: [
+      'Specializace v oboru oftalmologie druhého stupně'
+    ],
+    languages: null,
+    experience: [],
+    memberships: []
   }
 ]
 </script>
@@ -235,6 +257,7 @@ const doctors = [
                 <!-- Doctor Photo with Name Overlay -->
                 <div class="relative h-[450px] overflow-hidden">
                   <NuxtImg
+                    v-if="doctor.image"
                     :src="doctor.image"
                     :alt="`${doctor.name} - oftalmolog, oční lékař v Oční klinice Videre Praha`"
                     width="600"
@@ -243,6 +266,26 @@ const doctors = [
                     class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
+                  <div
+                    v-else
+                    class="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-200 via-stone-100 to-slate-300"
+                  >
+                    <div class="flex h-44 w-44 items-center justify-center rounded-full border border-white/60 bg-white/50 shadow-lg backdrop-blur-sm">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="h-24 w-24 text-slate-500"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
                   <div class="absolute bottom-6 left-6 right-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                     <h2 class="text-white text-2xl font-bold drop-shadow-lg mb-2">
@@ -258,7 +301,7 @@ const doctors = [
 
                 <CardContent class="p-8 space-y-6">
                   <!-- Education -->
-                  <div class="space-y-3">
+                  <div v-if="doctor.education?.length" class="space-y-3">
                     <h3 class="text-sm font-bold text-primary uppercase tracking-wider flex items-center gap-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -304,7 +347,7 @@ const doctors = [
                   </div>
 
                   <!-- Experience -->
-                  <div class="space-y-3">
+                  <div v-if="doctor.experience?.length" class="space-y-3">
                     <h3 class="text-sm font-bold text-primary uppercase tracking-wider flex items-center gap-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -330,7 +373,7 @@ const doctors = [
                   </div>
 
                   <!-- Memberships -->
-                  <div class="space-y-3">
+                  <div v-if="doctor.memberships?.length" class="space-y-3">
                     <h3 class="text-sm font-bold text-primary uppercase tracking-wider flex items-center gap-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -386,7 +429,7 @@ const doctors = [
               <Card class="text-center border-0 bg-background/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl p-6">
                 <CardContent class="pt-6">
                   <div class="text-5xl md:text-6xl font-bold text-primary mb-4 tracking-tighter">
-                    4
+                    5
                   </div>
                   <p class="text-muted-foreground font-medium">
                     Zkušení oční lékaři
@@ -480,6 +523,10 @@ const doctors = [
         <h3>MUDr. Ahmed Sayed Ahmed</h3>
         <p>
           MUDr. Ahmed Sayed Ahmed je oční lékař s více než 40 lety praxe. Promoci získal na Masarykově univerzitě v roce 1979 a atestaci z oftalmologie v Českých Budějovicích v roce 1982. Pracoval ve Vojenské nemocnici v Lattakia v Sýrii a na očním oddělení LF nemocnice Lattakia. Vlastní soukromou praxi vede od roku 1986.
+        </p>
+        <h3>MUDr. Ivana Divišková</h3>
+        <p>
+          MUDr. Ivana Divišková je oční lékařka se specializací v oboru oftalmologie druhého stupně.
         </p>
       </section>
     </article>
