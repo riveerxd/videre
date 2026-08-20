@@ -50,6 +50,27 @@ export const FULL_DENSITIES = '1'
 
 export const fullSizes = (image: GalleryImage) => `${image.width}px`
 
+/** Thumbnail rail: one 2x-sized request, scaled down by CSS. */
+export const THUMB_QUALITY = '72'
+export const THUMB_WIDTH = 84
+export const THUMB_HEIGHT = 112
+
+/**
+ * Image URLs that only ever appear in client-rendered markup.
+ *
+ * The lightbox mounts on click, so prerendering never sees these and will not
+ * generate them. Production serves the built output as plain static files with
+ * no image resizer behind it, which means anything absent from this list is a
+ * 404 rather than a slow first request. Feed it to `nitro.prerender.routes`.
+ */
+export const clientOnlyImageRoutes = (images: GalleryImage[]) =>
+  images.flatMap(image => [
+    ...['avif', 'webp'].map(
+      format => `/_ipx/f_${format}&q_${FULL_QUALITY}&s_${image.width}x${image.height}${image.src}`
+    ),
+    `/_ipx/f_webp&q_${THUMB_QUALITY}&s_${THUMB_WIDTH}x${THUMB_HEIGHT}${image.src}`
+  ])
+
 export const zarubovaGallery: GalleryImage[] = [
   {
     src: '/gallery/zarubova/vysetrovna.webp',

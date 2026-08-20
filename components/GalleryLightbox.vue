@@ -4,6 +4,9 @@ import {
   FULL_DENSITIES,
   FULL_QUALITY,
   GRID_QUALITY,
+  THUMB_HEIGHT,
+  THUMB_QUALITY,
+  THUMB_WIDTH,
   fullSizes,
   gridDensities,
   gridSizes,
@@ -312,10 +315,10 @@ onBeforeUnmount(() => {
               <NuxtImg
                 :src="image.src"
                 alt=""
-                :width="84"
-                :height="112"
+                :width="THUMB_WIDTH"
+                :height="THUMB_HEIGHT"
                 format="webp"
-                quality="72"
+                :quality="THUMB_QUALITY"
                 densities="1"
                 loading="lazy"
                 decoding="async"

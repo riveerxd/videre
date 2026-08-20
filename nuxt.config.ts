@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { clientOnlyImageRoutes, zarubovaGallery } from './lib/gallery'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
@@ -96,7 +98,12 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/sluzby', '/sluzby/esteticka-medicina', '/sluzby/optika', '/ordinace/zarubova', '/ordinace/cumpelikova', '/cenik', '/nas-tym', '/partneri']
+      routes: [
+        '/', '/sluzby', '/sluzby/esteticka-medicina', '/sluzby/optika', '/ordinace/zarubova', '/ordinace/cumpelikova', '/cenik', '/nas-tym', '/partneri',
+        // Gallery lightbox images: client-rendered, so crawling cannot find them
+        // and the static host has no resizer to make them on demand.
+        ...clientOnlyImageRoutes(zarubovaGallery)
+      ]
     },
     compressPublicAssets: true,
     minify: true
