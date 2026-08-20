@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card'
+import { zarubovaGallery } from '~/lib/gallery'
 
 const { fadeInUp, stagger, buttonPrimarySmooth, buttonSmooth, scaleIn } = useAnimations()
 const { addBreadcrumbSchema } = useStructuredData()
@@ -317,6 +318,14 @@ const location = {
               </Card>
             </Motion>
           </div>
+
+          <!-- Interior gallery -->
+          <ClinicGallery
+            :images="zarubovaGallery"
+            heading="Nahlédněte do ordinace"
+            lead="Podívejte se, kam přijdete. Čekárna, vyšetřovny i přístrojové vybavení, se kterým pracujeme při komplexním vyšetření zraku."
+            name="Fotogalerie oční ordinace v Poliklinice Zárubova"
+          />
 
           <!-- Google Maps -->
           <Motion tag="section" v-bind="fadeInUp" class="mb-12">
