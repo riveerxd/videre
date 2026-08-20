@@ -209,7 +209,7 @@ export const useAnimations = () => {
       y: 0,
       transition: { duration: 0.8, ease: easings.smooth }
     },
-    viewport: { once: true, margin: '-100px' }
+    inViewOptions: { once: true, margin: '-100px' }
   })
 
   // Scale in on scroll - images, cards
@@ -220,7 +220,7 @@ export const useAnimations = () => {
       scale: 1,
       transition: { duration: 0.7, ease: easings.soft }
     },
-    viewport: { once: true, margin: '-100px' }
+    inViewOptions: { once: true, margin: '-100px' }
   })
 
   /**
@@ -285,7 +285,7 @@ export const useAnimations = () => {
       y: 0,
       transition: { duration: 0.7, ease: easings.smooth }
     },
-    viewport: { once: true, margin: '-50px' }
+    inViewOptions: { once: true, margin: '-50px' }
   })
 
   // Button interaction - complete tactile feel
