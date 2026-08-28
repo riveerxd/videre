@@ -304,7 +304,7 @@ onBeforeUnmount(() => {
           <li v-for="(image, index) in images" :key="`thumb-${image.src}`" class="flex-none snap-start">
             <button
               type="button"
-              class="block overflow-hidden rounded-md outline-none transition-opacity duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              class="thumb block relative overflow-hidden rounded-md outline-none transition-opacity duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               :class="index === current
                 ? 'opacity-100 ring-2 ring-primary ring-offset-2 ring-offset-white'
                 : 'opacity-60 hover:opacity-100'"
@@ -335,12 +335,20 @@ onBeforeUnmount(() => {
 <style scoped>
 .track {
   touch-action: pan-y;
-  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
 .track.is-dragging {
   cursor: grabbing;
+}
+
+/* The thumbnails are 36px wide by design. The pseudo-element pads the pointer
+   target out to 44px without pushing the rail wider. */
+.thumb::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
 }
 
 /* The rail stays swipeable; only the native scrollbar chrome is suppressed,

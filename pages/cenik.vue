@@ -328,7 +328,7 @@ const surgeryServices = [
                           {{ service.note }}
                         </p>
                       </div>
-                      <div class="text-2xl font-bold text-primary shrink-0 bg-primary/5 px-4 py-2 rounded-xl">
+                      <div class="text-2xl font-bold text-primary shrink-0 bg-primary/5 px-4 py-2 rounded-xl tabular-nums">
                         {{ service.price }}
                       </div>
                     </div>
@@ -383,7 +383,7 @@ const surgeryServices = [
                             {{ item.note }}
                           </p>
                         </div>
-                        <div class="text-xl md:text-2xl font-bold text-primary shrink-0">
+                        <div class="text-xl md:text-2xl font-bold text-primary shrink-0 tabular-nums">
                           {{ item.price }}
                         </div>
                       </div>
@@ -426,7 +426,7 @@ const surgeryServices = [
                           {{ surgery.note }}
                         </p>
                       </div>
-                      <div class="text-2xl font-bold text-primary shrink-0 bg-primary/5 px-4 py-2 rounded-xl">
+                      <div class="text-2xl font-bold text-primary shrink-0 bg-primary/5 px-4 py-2 rounded-xl tabular-nums">
                         {{ surgery.price }}
                       </div>
                     </div>

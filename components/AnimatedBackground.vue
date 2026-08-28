@@ -110,4 +110,12 @@ const mobileBlobs = [
   75% { transform: translate(50vw, 10vh) scale(1.1); }
   100% { transform: translate(0, -60vh) scale(0.9); }
 }
+
+/* Freezing these at a keyframe would park half of them off screen, so the drift
+   is dropped entirely and each blob stays at its authored position. */
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}
 </style>

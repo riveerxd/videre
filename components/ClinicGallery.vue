@@ -205,8 +205,10 @@ useHead({
               aria-hidden="true"
             />
 
+            <!-- Hover is the only hint that a tile opens; on touch there is no
+                 hover, so the badge stays put there instead. -->
             <span
-              class="pointer-events-none absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-background/85 text-foreground opacity-0 shadow-lg backdrop-blur transition-all duration-300 group-hover:opacity-100 motion-safe:translate-y-1 motion-safe:group-hover:translate-y-0"
+              class="zoom-hint pointer-events-none absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-background/85 text-foreground opacity-0 shadow-lg backdrop-blur transition-all duration-300 group-hover:opacity-100 motion-safe:translate-y-1 motion-safe:group-hover:translate-y-0"
               aria-hidden="true"
             >
               <Expand class="h-4 w-4" :stroke-width="2" />
@@ -266,3 +268,12 @@ useHead({
     </Teleport>
   </section>
 </template>
+
+<style scoped>
+@media (hover: none) {
+  .zoom-hint {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>

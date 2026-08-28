@@ -22,6 +22,11 @@ const scrollToOrdinace = (e: Event) => {
     ? targetRect.top + start - navbarHeight
     : targetRect.top + start + (targetRect.height / 2) - (window.innerHeight / 2)
 
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.scrollTo(0, end)
+    return
+  }
+
   const duration = 1200
   const startTime = performance.now()
 

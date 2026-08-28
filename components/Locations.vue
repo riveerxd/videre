@@ -158,7 +158,7 @@ const locations = [
                     class="flex justify-between text-sm py-1 border-b border-border/50 last:border-0"
                   >
                     <span class="text-muted-foreground font-medium">{{ hour.day }}</span>
-                    <span class="font-semibold text-foreground">{{ hour.time }}</span>
+                    <span class="font-semibold text-foreground tabular-nums">{{ hour.time }}</span>
                   </div>
                 </div>
               </div>
@@ -166,24 +166,24 @@ const locations = [
               <!-- Action Buttons -->
               <div class="grid grid-cols-2 gap-4 pt-4">
                 <!-- Call Button -->
-                <Motion
-                  tag="a"
-                  :href="`tel:${location.phone}`"
-                  v-bind="buttonPremium"
-                  class="flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-semibold text-sm shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
-                  aria-label="Zavolejte nám"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
+                <Motion tag="div" v-bind="buttonPremium">
+                  <a
+                    :href="`tel:${location.phone.replace(/\s/g, '')}`"
+                    class="flex w-full items-center justify-center gap-2 px-6 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-semibold text-sm shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
+                    aria-label="Zavolejte nám"
                   >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  Zavolat
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    Zavolat
+                  </a>
                 </Motion>
 
                 <!-- Details Button -->

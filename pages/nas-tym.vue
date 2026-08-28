@@ -213,6 +213,15 @@ const doctors = [
     memberships: []
   }
 ]
+
+// A 404 or decode failure would otherwise leave a broken image box where a
+// portrait should be, so those cards fall back to the same silhouette used for
+// doctors who have no photo on file.
+const failedPortraits = ref<number[]>([])
+
+const onPortraitError = (index: number) => {
+  if (!failedPortraits.value.includes(index)) failedPortraits.value.push(index)
+}
 </script>
 
 <template>
@@ -257,7 +266,7 @@ const doctors = [
                 <!-- Doctor Photo with Name Overlay -->
                 <div class="relative h-[450px] overflow-hidden">
                   <NuxtImg
-                    v-if="doctor.image"
+                    v-if="doctor.image && !failedPortraits.includes(index)"
                     :src="doctor.image"
                     :alt="`${doctor.name} - oftalmolog, oční lékař v Oční klinice Videre Praha`"
                     width="600"
@@ -265,6 +274,7 @@ const doctors = [
                     format="webp"
                     class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
+                    @error="onPortraitError(index)"
                   />
                   <div
                     v-else
@@ -415,7 +425,7 @@ const doctors = [
             <Motion tag="div" v-bind="cardEntrance">
               <Card class="text-center border-0 bg-background/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl p-6">
                 <CardContent class="pt-6">
-                  <div class="text-5xl md:text-6xl font-bold text-primary mb-4 tracking-tighter">
+                  <div class="text-5xl md:text-6xl font-bold text-primary mb-4 tracking-tighter tabular-nums">
                     40+
                   </div>
                   <p class="text-muted-foreground font-medium">
@@ -428,7 +438,7 @@ const doctors = [
             <Motion tag="div" v-bind="cardEntrance">
               <Card class="text-center border-0 bg-background/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl p-6">
                 <CardContent class="pt-6">
-                  <div class="text-5xl md:text-6xl font-bold text-primary mb-4 tracking-tighter">
+                  <div class="text-5xl md:text-6xl font-bold text-primary mb-4 tracking-tighter tabular-nums">
                     5
                   </div>
                   <p class="text-muted-foreground font-medium">
@@ -441,7 +451,7 @@ const doctors = [
             <Motion tag="div" v-bind="cardEntrance">
               <Card class="text-center border-0 bg-background/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl p-6">
                 <CardContent class="pt-6">
-                  <div class="text-5xl md:text-6xl font-bold text-primary mb-4 tracking-tighter">
+                  <div class="text-5xl md:text-6xl font-bold text-primary mb-4 tracking-tighter tabular-nums">
                     5+
                   </div>
                   <p class="text-muted-foreground font-medium">

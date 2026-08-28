@@ -96,6 +96,11 @@ const scrollToOrdinace = () => {
     ? targetRect.top + start - navbarHeight
     : targetRect.top + start + (targetRect.height / 2) - (window.innerHeight / 2)
 
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.scrollTo(0, end)
+    return
+  }
+
   const duration = 1200
   const startTime = performance.now()
 
@@ -142,7 +147,7 @@ onMounted(() => {
         <!-- Logo and Brand -->
         <NuxtLink
           to="/"
-          class="flex items-center gap-3 group focus:outline-none rounded-lg"
+          class="flex items-center gap-3 group rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label="Videre.cz - Úvodní stránka"
         >
           <Motion
@@ -185,7 +190,7 @@ onMounted(() => {
                     <NavigationMenuLink v-if="item.href" as-child>
                       <NuxtLink
                         :to="item.href"
-                        class="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                        class="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium outline-none transition-colors hover:text-primary focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50"
                         active-class="text-primary font-semibold"
                       >
                         {{ item.label }}
@@ -204,7 +209,7 @@ onMounted(() => {
                               <NavigationMenuLink as-child>
                                 <NuxtLink
                                   :to="subLink.href"
-                                  class="block select-none rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground no-underline outline-none transition-all duration-200 hover:text-primary focus:text-primary"
+                                  class="block select-none rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground no-underline outline-none transition-all duration-200 hover:text-primary focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-ring"
                                   active-class="text-primary font-semibold"
                                 >
                                   {{ subLink.label }}
@@ -306,8 +311,10 @@ onMounted(() => {
                   <!-- Dropdown -->
                   <div v-else-if="item.subLinks" class="space-y-1">
                     <button
+                      type="button"
+                      :aria-expanded="!!mobileDropdowns[item.label]"
                       @click="toggleMobileDropdown(item.label)"
-                      class="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-foreground hover:text-primary rounded-lg transition-all duration-300"
+                      class="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-foreground hover:text-primary rounded-lg outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {{ item.label }}
                       <ChevronDown
@@ -330,7 +337,7 @@ onMounted(() => {
                           v-for="subLink in item.subLinks"
                           :key="subLink.href"
                           :to="subLink.href"
-                          class="block px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary rounded-lg transition-all duration-300"
+                          class="flex min-h-[44px] items-center px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary rounded-lg outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring"
                           active-class="text-primary font-semibold"
                         >
                           {{ subLink.label }}

@@ -310,7 +310,7 @@ const location = {
                       class="flex justify-between items-center text-base py-2 border-b border-border/50 last:border-0"
                     >
                       <span class="text-muted-foreground font-medium">{{ hour.day }}</span>
-                      <span class="font-bold text-foreground">{{ hour.time }}</span>
+                      <span class="font-bold text-foreground tabular-nums">{{ hour.time }}</span>
                     </div>
                   </div>
                 </CardContent>
